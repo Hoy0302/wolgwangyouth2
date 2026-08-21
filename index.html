@@ -58,14 +58,13 @@
             top: 0; left: 0; right: 0; bottom: 0;
             width: 100%; max-width: 480px;
             margin: 0 auto;
-            /* 몽환적인 오라 그라데이션 배경 연출 */
             background: linear-gradient(135deg, #fce4ec 0%, #e1f5fe 50%, #f3e5f5 100%);
             z-index: 2000;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center; /* 중앙 정렬로 변경하여 버튼을 위로 올림 */
             align-items: center;
-            padding: 60px 30px;
+            padding: 40px 30px;
             box-sizing: border-box;
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
@@ -76,7 +75,7 @@
         }
         .intro-content {
             text-align: center;
-            margin-top: 80px;
+            margin-bottom: 40px; /* 버튼과의 간격 조절 */
         }
         .intro-subtitle {
             font-size: 14px;
@@ -101,26 +100,30 @@
         }
         .intro-btn {
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.85);
+            max-width: 320px;
+            background-color: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 1);
             color: var(--text-main);
             font-size: 16px;
             font-weight: 700;
             padding: 18px 0;
             border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-            transition: all 0.2s ease;
+            /* 그림자 입체감 부여 */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: all 0.15s ease-in-out;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
         }
+        /* ★★★ 버튼을 누를 때 꾹 눌리는 듯한 인터랙션 효과 ★★★ */
         .intro-btn:active {
-            transform: scale(0.97);
-            background-color: #ffffff;
+            transform: scale(0.95);
+            background-color: rgba(235, 240, 243, 0.95);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
         }
 
         /* =========================================
@@ -233,7 +236,6 @@
 
         .guide-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 5px; }
         .guide-table th, .guide-table td { border: 1px solid #E0E0E0; padding: 11px 10px; text-align: center; }
-        /* 수요저녁예배 등 긴 글자가 한 줄로 들어가도록 왼쪽 라벨 칸 넓이 38%로 확장 */
         .guide-table th { background-color: #F8F9FA; font-weight: 600; width: 37%; }
         
         .guide-list { padding-left: 20px; margin: 8px 0 0 0; color: var(--text-sub); font-size: 15px; line-height: 1.5; }
@@ -510,17 +512,16 @@
         const viewHome = document.getElementById('view-home');
         const viewScrollable = document.getElementById('view-scrollable');
         const viewNews = document.getElementById('view-news'); 
-        const viewIntro = document.getElementById('view-intro'); // 인트로 화면
+        const viewIntro = document.getElementById('view-intro'); 
         const navItems = document.querySelectorAll('.nav-item');
         const sections = document.querySelectorAll('.section-block');
         let isClicking = false; 
 
-        // 인트로 버튼 눌렀을 때 주보 메인으로 진입하는 함수
         function openMainWeekly() {
             viewIntro.classList.add('fade-out');
             setTimeout(() => {
                 viewIntro.style.display = 'none';
-            }, 600); // 애니메이션 시간과 일치시킴
+            }, 600); 
         }
 
         function resetTabs() {
