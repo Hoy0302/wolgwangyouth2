@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>월광교회 청년 주일예배</title>
+    <title>청년예배 주보</title>
     <!-- 웹 폰트 (Pretendard) -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <style>
@@ -51,7 +51,7 @@
         }
 
         /* =========================================
-           3. 인트로 화면 (퍼지는 효과 제거 / 페이드아웃 적용)
+           3. 인트로 화면
            ========================================= */
         #view-intro {
             position: fixed;
@@ -199,6 +199,16 @@
         .team-table { width: 100%; border-collapse: collapse; margin-top: 15px; table-layout: fixed; }
         .team-table th, .team-table td { border: 1px solid #E0E0E0; padding: 10px 4px; text-align: center; word-break: keep-all; }
         .team-table th { background-color: var(--primary-light); font-weight: 700; color: var(--text-main); font-size: 13px; }
+        
+        /* ★★★ 팀 모임 이름 (작은 글씨) CSS 추가 ★★★ */
+        .team-leader {
+            display: block; 
+            font-size: 11px; 
+            font-weight: 500; 
+            color: var(--text-sub); 
+            margin-top: 3px; 
+        }
+
         .loc-main { font-weight: 600; color: var(--text-main); font-size: 13px; margin-bottom: 3px; line-height: 1.2; }
         .loc-sub { font-size: 12px; color: #777777; line-height: 1.2; }
 
@@ -222,11 +232,11 @@
                 <div class="intro-subtitle">Wolgwang Youth</div>
                 <h1 class="intro-main-title">나를 복음으로!!</h1>
                 <p class="intro-desc">
-                    복음 안에서 좋은 그리스도인, 좋은 공동체
+                    너희는 모든 악독과 노함과 분냄과 떠드는 것과 비방하는 것을 모든 악의와 함께 버리고 서로 친절하게 하라
                 </p>
             </div>
             <button class="intro-btn" onclick="openMainWeekly()">
-                월광청년예배
+                2026 청년예배 주보 열기
             </button>
         </div>
 
@@ -386,15 +396,15 @@
                         </tr>
                     </table>
                     <div style="text-align: right; font-size: 14px; color: #E74C3C; font-weight: 600; margin-top: 8px;">
-                        ex) 9635 김월광 (핸드폰 뒷자리 + 이름)
+                        ex) 96김월광
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-title">새가족 안내</div>
                     <ul class="guide-list">
-                        <li>예배 전(1층), 예배 후(2층) 새가족 등록을 받습니다.</li>
-                        <li>새가족 교육은 선교센터 2층 새가족실에서 4주간 진행됩니다./</li>
+                        <li>예배 전(1층), 예배 후 (장소 입력)</li>
+                        <li>새가족 교육은 선교센터 (장소 입력)</li>
                     </ul>
                 </div>
 
@@ -402,26 +412,27 @@
                     <div class="card-title">팀 모임 장소</div>
                     <table class="team-table">
                         <tr>
-                            <th>1팀(이애영)</th>
-                            <th>2팀(남믿음)</th>
-                            <th>3팀(이모은)</th>
-                            <th>4팀(고빛나)</th>
+                            <!-- ★★★ 팀 이름 옆에 span 태그로 리더 이름 추가 ★★★ -->
+                            <th>1팀 <span class="team-leader">(홍길동)</span></th>
+                            <th>2팀 <span class="team-leader">(이름)</span></th>
+                            <th>3팀 <span class="team-leader">(이름)</span></th>
+                            <th>4팀 <span class="team-leader">(이름)</span></th>
                         </tr>
                         <tr>
-                            <td><div class="loc-main">디모데실</div><div class="loc-sub">선교센터 2층</div></td>
-                            <td><div class="loc-main">사무엘실</div><div class="loc-sub">선교센터 2층</div></td>
+                            <td><div class="loc-main">장소명</div><div class="loc-sub">위치(층)</div></td>
+                            <td><div class="loc-main">장소명</div><div class="loc-sub">위치(층)</div></td>
                             <td><div class="loc-main">장소명</div><div class="loc-sub">위치(층)</div></td>
                             <td><div class="loc-main">장소명</div><div class="loc-sub">위치(층)</div></td>
                         </tr>
                         <tr>
-                            <th>5팀(이정연)</th>
-                            <th>6팀(서희수)</th>
-                            <th>7팀(신예인)</th>
-                            <th>8팀(황능희)</th>
+                            <th>5팀 <span class="team-leader">(이름)</span></th>
+                            <th>6팀 <span class="team-leader">(이름)</span></th>
+                            <th>7팀 <span class="team-leader">(이름)</span></th>
+                            <th>8팀 <span class="team-leader">(이름)</span></th>
                         </tr>
                         <tr>
-                            <td><div class="loc-main">스위트홀</div><div class="loc-sub">선교센터 B1층</div></td>
-                            <td><div class="loc-main">샬롬홀</div><div class="loc-sub">본관 1층</div></td>
+                            <td><div class="loc-main">장소명</div><div class="loc-sub">위치(층)</div></td>
+                            <td><div class="loc-main">장소명</div><div class="loc-sub">위치(층)</div></td>
                             <td><div class="loc-main">장소명</div><div class="loc-sub">위치(층)</div></td>
                             <td><div class="loc-main">장소명</div><div class="loc-sub">위치(층)</div></td>
                         </tr>
@@ -432,16 +443,16 @@
                 <div class="card">
                     <div class="card-title">교회 안내 정보</div>
                     <div class="info-grid">
-                        <div class="info-row"><span class="info-label">원로</span><span>김유수 목사</span></div>
-                        <div class="info-row"><span class="info-label">담임</span><span>김요한 목사</span></div>
-                        <div class="info-row"><span class="info-label">담당</span><span>박은진 목사</span></div>
-                        <div class="info-row"><span class="info-label">간사</span><span>김수애 자매</span></div>
-                        <div class="info-row"><span class="info-label">위원장</span><span>임건한 장로</span></div>
-                        <div class="info-row"><span class="info-label">국장</span><span>백영환 안수</span></div>
+                        <div class="info-row"><span class="info-label">원로목사</span><span>이름 입력</span></div>
+                        <div class="info-row"><span class="info-label">담임목사</span><span>이름 입력</span></div>
+                        <div class="info-row"><span class="info-label">담당목사</span><span>이름 입력</span></div>
+                        <div class="info-row"><span class="info-label">간사</span><span>이름 입력</span></div>
+                        <div class="info-row"><span class="info-label">위원장</span><span>이름 입력</span></div>
+                        <div class="info-row"><span class="info-label">국장</span><span>이름 입력</span></div>
                     </div>
                     <div class="contact-info">
-                        <div class="contact-row"><span class="info-label">주소</span><span>전남광주통합특별시 서구 염화로31번길 7 (62025)</span></div>
-                        <div class="contact-row"><span class="info-label">전화</span><span>0507-1369-0447</span></div>
+                        <div class="contact-row"><span class="info-label">주소</span><span>광주광역시 (상세 주소 입력)</span></div>
+                        <div class="contact-row"><span class="info-label">전화</span><span>062-000-0000</span></div>
                         <div class="contact-row"><span class="info-label">FAX</span><span>062-000-0000</span></div>
                     </div>
                 </div>
@@ -480,7 +491,7 @@
         const sections = document.querySelectorAll('.section-block');
         let isClicking = false; 
 
-        /* 페이드아웃 애니메이션 (퍼지는 효과 제거됨) */
+        /* 페이드아웃 애니메이션 */
         function openMainWeekly() {
             viewIntro.classList.add('fade-out');
             setTimeout(() => {
