@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>월광청년 주일예배 주보</title>
+    <title>청년예배 주보</title>
     <!-- 웹 폰트 (Pretendard) -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <style>
@@ -51,7 +51,80 @@
         }
 
         /* =========================================
-           3. 상단 탭 네비게이션 (고정)
+           3. 레퍼런스 감성 인트로(오프닝) 화면 스타일
+           ========================================= */
+        #view-intro {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100%; max-width: 480px;
+            margin: 0 auto;
+            /* 몽환적인 오라 그라데이션 배경 연출 */
+            background: linear-gradient(135deg, #fce4ec 0%, #e1f5fe 50%, #f3e5f5 100%);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 30px;
+            box-sizing: border-box;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        #view-intro.fade-out {
+            opacity: 0;
+            transform: scale(1.05);
+            pointer-events: none;
+        }
+        .intro-content {
+            text-align: center;
+            margin-top: 80px;
+        }
+        .intro-subtitle {
+            font-size: 14px;
+            font-weight: 700;
+            color: #89B4C4;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .intro-main-title {
+            font-size: 34px;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+        .intro-desc {
+            font-size: 14px;
+            color: var(--text-sub);
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+        .intro-btn {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            color: var(--text-main);
+            font-size: 16px;
+            font-weight: 700;
+            padding: 18px 0;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .intro-btn:active {
+            transform: scale(0.97);
+            background-color: #ffffff;
+        }
+
+        /* =========================================
+           4. 상단 탭 네비게이션 (고정)
            ========================================= */
         .tabs-menu {
             position: fixed;
@@ -75,7 +148,7 @@
         .nav-item.active { background-color: var(--primary-color); color: white; box-shadow: 0 4px 12px rgba(137, 180, 196, 0.4); }
 
         /* =========================================
-           4. 공통 텍스트 및 타이틀 스타일
+           5. 공통 텍스트 및 타이틀 스타일
            ========================================= */
         .page-title-area { padding: 95px 20px 20px 20px; text-align: center; }
         
@@ -104,7 +177,7 @@
         .no-border { border-bottom: none !important; padding-bottom: 8px !important; }
 
         /* =========================================
-           5. 카드 및 리스트 컴포넌트
+           6. 카드 및 리스트 컴포넌트
            ========================================= */
         .home-content { padding: 0 20px 20px 20px; }
         .card { background-color: var(--card-bg); border-radius: 20px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); margin-bottom: 15px; text-align: left; }
@@ -122,7 +195,7 @@
         .contact-row { display: flex; align-items: center; gap: 12px; }
 
         /* =========================================
-           6. 타임라인 및 예배 순서 스타일
+           7. 타임라인 및 예배 순서 스타일
            ========================================= */
         .timeline-wrapper { position: relative; padding-left: 36px; padding-right: 20px; }
         .timeline-line { position: absolute; top: 20px; bottom: 30px; left: 20px; width: 2px; background-color: var(--primary-light); z-index: 1; }
@@ -149,7 +222,7 @@
         .share-list li { margin-bottom: 15px; }
 
         /* =========================================
-           7. 소식 탭 내 서브 탭 스타일 및 테이블
+           8. 소식 탭 내 서브 탭 스타일 및 테이블
            ========================================= */
         .sub-tabs { display: flex; gap: 10px; margin: 10px 20px 20px 20px; }
         .sub-tab-btn { flex: 1; padding: 11px 0; background-color: var(--primary-light); color: var(--primary-color); font-weight: 700; font-size: 15px; border: none; border-radius: 12px; cursor: pointer; transition: all 0.2s ease; }
@@ -160,6 +233,7 @@
 
         .guide-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 5px; }
         .guide-table th, .guide-table td { border: 1px solid #E0E0E0; padding: 11px 10px; text-align: center; }
+        /* 수요저녁예배 등 긴 글자가 한 줄로 들어가도록 왼쪽 라벨 칸 넓이 38%로 확장 */
         .guide-table th { background-color: #F8F9FA; font-weight: 600; width: 37%; }
         
         .guide-list { padding-left: 20px; margin: 8px 0 0 0; color: var(--text-sub); font-size: 15px; line-height: 1.5; }
@@ -177,10 +251,24 @@
 <body>
     <div class="app-container">
         
+        <!-- ================= [인트로 오프닝 화면] ================= -->
+        <div id="view-intro">
+            <div class="intro-content">
+                <div class="intro-subtitle">Wolgwang Youth</div>
+                <h1 class="intro-main-title">나를 복음으로!!</h1>
+                <p class="intro-desc">
+                    너희는 모든 악독과 노함과 분냄과 떠드는 것과 비방하는 것을 모든 악의와 함께 버리고 서로 친절하게 하라
+                </p>
+            </div>
+            <button class="intro-btn" onclick="openMainWeekly()">
+                ✨ 2026 청년예배 주보 열기
+            </button>
+        </div>
+
         <nav class="tabs-menu">
-            <button class="nav-item active" data-tab="home" onclick="showHome()">월광청년</button>
+            <button class="nav-item active" data-tab="home" onclick="showHome()">첫화면</button>
             <button class="nav-item" data-tab="worship" onclick="showScrollable('sec-worship')">예배순서</button>
-            <button class="nav-item" data-tab="sermon" onclick="showScrollable('sec-sermon')">아름다운 순</button>
+            <button class="nav-item" data-tab="sermon" onclick="showScrollable('sec-sermon')">설교나눔</button>
             <button class="nav-item" data-tab="news" onclick="showNews()">소식</button>
         </nav>
         
@@ -197,16 +285,16 @@
             <div class="home-content">
                 <div class="card church-info">
                     <div class="info-grid">
-                        <div class="info-row"><span class="info-label">원로</span><span>김유수 목사</span></div>
-                        <div class="info-row"><span class="info-label">담임</span><span>김요한 목사</span></div>
-                        <div class="info-row"><span class="info-label">담당</span><span>박은진 목사</span></div>
-                        <div class="info-row"><span class="info-label">간사</span><span>김수애 간사</span></div>
-                        <div class="info-row"><span class="info-label">위원장</span><span>임건한 장로</span></div>
-                        <div class="info-row"><span class="info-label">국장</span><span>백영환 집사</span></div>
+                        <div class="info-row"><span class="info-label">원로목사</span><span>이름 입력</span></div>
+                        <div class="info-row"><span class="info-label">담임목사</span><span>이름 입력</span></div>
+                        <div class="info-row"><span class="info-label">담당목사</span><span>이름 입력</span></div>
+                        <div class="info-row"><span class="info-label">간사</span><span>이름 입력</span></div>
+                        <div class="info-row"><span class="info-label">위원장</span><span>이름 입력</span></div>
+                        <div class="info-row"><span class="info-label">국장</span><span>이름 입력</span></div>
                     </div>
                     <div class="contact-info">
-                        <div class="contact-row"><span class="info-label">주소</span><span>전남광주 서구 염화로31번길 7 (62025)</span></div>
-                        <div class="contact-row"><span class="info-label">전화</span><span>0507-1369-0447</span></div>
+                        <div class="contact-row"><span class="info-label">주소</span><span>광주광역시 (상세 주소 입력)</span></div>
+                        <div class="contact-row"><span class="info-label">전화</span><span>062-000-0000</span></div>
                         <div class="contact-row"><span class="info-label">FAX</span><span>062-000-0000</span></div>
                     </div>
                 </div>
@@ -239,16 +327,16 @@
                         </div>
                         <div class="order-item"><span class="order-title">대표기도</span><span class="order-detail">이름 입력</span></div>
                         
-                        <div class="order-item no-border"><span class="order-title">말씀선포</span><span class="order-detail">박은진 목사</span></div>
+                        <div class="order-item no-border"><span class="order-title">말씀선포</span><span class="order-detail">목사님 성함</span></div>
                         
                         <div class="sermon-box">
-                            <div class="sermon-title">" 옷 속의 나 "</div>
+                            <div class="sermon-title">"설교 제목을 입력하세요"</div>
                             <div class="sermon-bible">사도행전 0:0-0</div>
                         </div>
 
-                        <div class="order-item"><span class="order-title">봉헌</span><span class="order-detail">손혜민 팀장</span></div>
-                        <div class="order-item"><span class="order-title">축도</span><span class="order-detail">박은진 목사</span></div>
-                        <div class="order-item"><span class="order-title">광고</span><span class="order-detail">박은진 목사</span></div>
+                        <div class="order-item"><span class="order-title">봉헌</span><span class="order-detail">다함께</span></div>
+                        <div class="order-item"><span class="order-title">광고</span><span class="order-detail">인도자</span></div>
+                        <div class="order-item"><span class="order-title">축도</span><span class="order-detail">목사님 성함</span></div>
                     </div>
 
                     <div class="card">
@@ -265,15 +353,15 @@
                 <!-- 설교나눔 -->
                 <div id="sec-sermon" class="section-block">
                     <div class="timeline-dot"></div>
-                    <div class="section-title">아름다운 순</div>
+                    <div class="section-title">설교나눔</div>
                     <div class="card">
                         <div class="card-title">설교 요약</div>
                         <p class="card-desc">이곳에 이번 주 설교의 핵심 내용을 요약해서 적어주시면 됩니다.</p>
                     </div>
                     <div class="card">
-                        <div class="card-title">삶 속으로</div>
+                        <div class="card-title">셀 나눔 질문</div>
                         <ol class="share-list">
-                            <li>여러분이 요즘 가장 입고싶은 '옷'은 무엇인가요?<br>(대학,직장,인정,성공,좋은 관계 등 내가 갖고 싶거나 이루고 싶은 것을 생각해봅시다.</li>
+                            <li>오늘 말씀을 들으며 가장 마음에 와닿았던 부분은 무엇인가요?</li>
                             <li>나의 삶에 구체적으로 어떻게 적용해 볼 수 있을까요?</li>
                             <li>이번 주 결단한 내용을 셀원들과 함께 나누고 기도해 보세요.</li>
                         </ol>
@@ -302,7 +390,7 @@
                     </ul>
                     <table class="guide-table">
                         <tr>
-                            <th rowspan="4" style="width: 30%;">주일예배</th>
+                            <th rowspan="4">주일예배</th>
                             <td>1부 (시간입력)</td>
                         </tr>
                         <tr><td>2부 (시간입력)</td></tr>
@@ -330,8 +418,8 @@
                 <div class="card">
                     <div class="card-title">새가족 안내</div>
                     <ul class="guide-list">
-                        <li>예배 전(1층), 예배 후(2층) 새가족 등록을 받습니다.</li>
-                        <li>새가족 교육은 선교센터 선교센터 2층 새가족실에서 4주간 진행됩니다</li>
+                        <li>예배 전(1층), 예배 후 (장소 입력)</li>
+                        <li>새가족 교육은 선교센터 (장소 입력)</li>
                     </ul>
                 </div>
 
@@ -339,25 +427,25 @@
                     <div class="card-title">헌금 안내</div>
                     <ul class="guide-list" style="margin-bottom: 8px;">
                         <li style="margin-bottom: 12px;">오프라인 헌금 안내<br><span style="color: #E74C3C; font-weight: 600;">봉투에 이름, 핸드폰 번호 기입</span></li>
-                        <li>온라인 헌금 안내 <span style="font-size: 13px; color: var(--text-sub); font-weight: normal;">(예금주 : 월광교회)</span></li>
+                        <li>온라인 헌금 안내 <span style="font-size: 13px; color: var(--text-sub); font-weight: normal;">(예금주 : 예금주 입력)</span></li>
                     </ul>
                     
                     <table class="guide-table" style="margin-top: 0;">
                         <tr>
                             <th style="width: 40%;">주일/감사헌금</th>
-                            <td>광주은행 141-107-337467</td>
+                            <td>광주은행 000-000-000000</td>
                         </tr>
                         <tr>
                             <th>십일조</th>
-                            <td>광주 000-000-000000</td>
+                            <td>광주은행 000-000-000000</td>
                         </tr>
                         <tr>
                             <th>선교헌금</th>
-                            <td>광주 000-000-000000</td>
+                            <td>광주은행 000-000-000000</td>
                         </tr>
                     </table>
                     <div style="text-align: right; font-size: 14px; color: #E74C3C; font-weight: 600; margin-top: 8px;">
-                        ex) 9635 김월광 (핸드폰뒷자리 + 이름)
+                        ex) 96김월광
                     </div>
                 </div>
 
@@ -366,15 +454,15 @@
                     <div class="card-title">팀 모임 장소</div>
                     <table class="team-table">
                         <tr>
-                            <th>1팀(이애영)</th>
-                            <th>2팀(남믿음)</th>
-                            <th>3팀(이모은)</th>
-                            <th>4팀(고빛나)</th>
+                            <th>1팀</th>
+                            <th>2팀</th>
+                            <th>3팀</th>
+                            <th>4팀</th>
                         </tr>
                         <tr>
-                            <td><div class="loc-main">디모데실</div><div class="loc-sub">선교센터2층</div></td>
-                            <td><div class="loc-main">사무엘실</div><div class="loc-sub">선교센터2층</div></td>
-                            <td><div class="loc-main">부흥홀</div><div class="loc-sub">선교센터3층</div></td>
+                            <td><div class="loc-main">장소명</div><div class="loc-sub">위치(층)</div></td>
+                            <td><div class="loc-main">장소명</div><div class="loc-sub">위치(층)</div></td>
+                            <td><div class="loc-main">장소명</div><div class="loc-sub">위치(층)</div></td>
                             <td><div class="loc-main">장소명</div><div class="loc-sub">위치(층)</div></td>
                         </tr>
                         <tr>
@@ -416,15 +504,24 @@
     </div>
 
     <!-- =========================================
-         7. 자바스크립트
+         9. 자바스크립트
          ========================================= -->
     <script>
         const viewHome = document.getElementById('view-home');
         const viewScrollable = document.getElementById('view-scrollable');
         const viewNews = document.getElementById('view-news'); 
+        const viewIntro = document.getElementById('view-intro'); // 인트로 화면
         const navItems = document.querySelectorAll('.nav-item');
         const sections = document.querySelectorAll('.section-block');
         let isClicking = false; 
+
+        // 인트로 버튼 눌렀을 때 주보 메인으로 진입하는 함수
+        function openMainWeekly() {
+            viewIntro.classList.add('fade-out');
+            setTimeout(() => {
+                viewIntro.style.display = 'none';
+            }, 600); // 애니메이션 시간과 일치시킴
+        }
 
         function resetTabs() {
             navItems.forEach(item => item.classList.remove('active'));
